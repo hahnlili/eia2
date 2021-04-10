@@ -4,9 +4,9 @@ namespace Boxes {
     let x: number = 0;
     let y: number = 0;
 
-window.addEventListener("load", schleifenbox)
+window.addEventListener("load", box)
 
-function schleifenbox():void{
+function box():void{
     for (let i: number = 0; i < n; i++) {
         y += (i == 2) ? 20 : 50;
         x = (x + 170) % 400;
