@@ -4,9 +4,9 @@ namespace Boxes {
     let x: number = 0;
     let y: number = 0;
 
-window.addEventListener("load", box)
+window.addEventListener("load", boxColor)
 
-function box():void{
+function boxColor():void{
     for (let i: number = 0; i < n; i++) {
         y += (i == 2) ? 20 : 50;
         x = (x + 170) % 400;
