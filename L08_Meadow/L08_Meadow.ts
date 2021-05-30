@@ -1,4 +1,4 @@
-namespace Meadow {
+namespace Meadow1 {
 
     interface Vector {
         x: number;
@@ -8,7 +8,7 @@ namespace Meadow {
     window.addEventListener("load", handleLoad);
 
     let golden: number = 0.62;
-    let crc2: CanvasRenderingContext2D;
+    export let crc2: CanvasRenderingContext2D;
 
     function handleLoad(_event: Event): void {
 
