@@ -8,7 +8,7 @@ namespace Meadow1 {
     window.addEventListener("load", handleLoad);
 
     let golden: number = 0.62;
-    export let crc2: CanvasRenderingContext2D;
+    let crc2: CanvasRenderingContext2D;
 
     function handleLoad(_event: Event): void {
 
@@ -33,6 +33,14 @@ namespace Meadow1 {
             let randomX: number = Math.floor(Math.random() * crc2.canvas.width);
             let randomY: number = Math.floor(Math.random() * 200);
             drawFMN(randomX + 0, randomY + horizon + 200);
+            
+
+        }
+        for (let index: number = 0; index < 200; index++) {
+            let randomX: number = Math.floor(Math.random() * crc2.canvas.width);
+            let randomY: number = Math.floor(Math.random() * 200);
+            drawStar(randomX + 0, randomY + horizon + 200);
+            
 
         }
 
