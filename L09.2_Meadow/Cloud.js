@@ -1,53 +1,72 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var L09_Meadow;
 (function (L09_Meadow) {
-    var Cloud = /** @class */ (function () {
-        function Cloud(_size) {
+    var Cloud = /** @class */ (function (_super) {
+        __extends(Cloud, _super);
+        function Cloud(_size, _position, _velocity, _x, _y) {
+            var _this = _super.call(this, _size, _velocity, _position, _x, _y) || this;
             console.log("Hier werden Wolken bewegt");
-            this.position = new L09_Meadow.Vector(0, 0);
-            this.velocity = new L09_Meadow.Vector(0, 0);
-            this.velocity.random(100, 200);
+            _this.position = new L09_Meadow.Vector(0, 0);
+            _this.velocity = new L09_Meadow.Vector(0, 0);
+            _this.velocity.random(100, 200);
+            _this.size = _size;
+            return _this;
         }
-        Cloud.prototype.move = function (_timeslice) {
-            console.log("hier bewegt sich eine Wolke");
-            var offset = new L09_Meadow.Vector(this.velocity.x, this.velocity.y);
-            offset.scale(_timeslice);
-            this.position.add(offset);
-            if (this.position.x < 0)
-                this.position.x += L09_Meadow.crc2.canvas.width;
-            if (this.position.y / 2 < 0)
-                this.position.y += L09_Meadow.crc2.canvas.height;
-            if (this.position.x > L09_Meadow.crc2.canvas.width)
-                this.position.x -= L09_Meadow.crc2.canvas.width;
-            if (this.position.y / 2 > L09_Meadow.crc2.canvas.height)
-                this.position.y -= L09_Meadow.crc2.canvas.height;
-        };
+        /*  move(_timeslice: number): void {
+             console.log("hier bewegt sich eine Wolke");
+             /* let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("#board"); */
+        /* let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D> canvas.getContext("2d"); */
+        /*  let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
+         offset.scale(_timeslice);
+         this.position.add(offset); */
+        /* if (this.position.x < 0)
+            this.position.x += crc2.canvas.width;
+
+        if (this.position.y < 0)
+            this.position.y += crc2.canvas.height / golden;
+
+        if (this.position.x > crc2.canvas.width)
+            this.position.x -= crc2.canvas.width;
+
+        if (this.position.y > crc2.canvas.height / golden)
+            this.position.y -= crc2.canvas.height;   */
+        //} 
         Cloud.prototype.draw = function () {
-            function drawCloud(_position, _size) {
-                console.log("hier werden steine gemalt");
-                //nParticles ist die anzahl der Particel aus denen sich die Wole zusammensetzt
-                var nParticles = 5;
-                var radiusParticle = 60;
-                var gradient = L09_Meadow.crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
-                var particle = new Path2D();
-                particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
-                gradient.addColorStop(0, "HSLA(295, 28%, 84%, 0.5)");
-                gradient.addColorStop(1, "HSLA(295, 28%, 84%, 0)");
-                L09_Meadow.crc2.save();
-                L09_Meadow.crc2.translate(_position.x, _position.y);
-                L09_Meadow.crc2.fillStyle = gradient;
-                for (var drawn = 0; drawn < nParticles; drawn++) {
-                    L09_Meadow.crc2.save();
-                    var x = (Math.random() - 0.5) * _size.x;
-                    var y = -(Math.random() * _size.y);
-                    L09_Meadow.crc2.translate(x, y);
-                    L09_Meadow.crc2.fill(particle);
-                    L09_Meadow.crc2.restore();
-                }
-                L09_Meadow.crc2.restore();
-            }
+            console.log("Wolken!");
+            L09_Meadow.crc2.save();
+            L09_Meadow.crc2.translate(this.position.x, this.position.y);
+            L09_Meadow.crc2.beginPath();
+            L09_Meadow.crc2.moveTo(170, 80);
+            L09_Meadow.crc2.bezierCurveTo(130, 100, 130, 150, 230, 150);
+            L09_Meadow.crc2.bezierCurveTo(250, 180, 320, 180, 340, 150);
+            L09_Meadow.crc2.bezierCurveTo(420, 150, 420, 120, 390, 100);
+            L09_Meadow.crc2.bezierCurveTo(430, 40, 370, 30, 340, 50);
+            L09_Meadow.crc2.bezierCurveTo(320, 5, 250, 20, 250, 50);
+            L09_Meadow.crc2.bezierCurveTo(200, 5, 150, 20, 170, 80);
+            L09_Meadow.crc2.closePath();
+            L09_Meadow.crc2.lineWidth = 5;
+            L09_Meadow.crc2.fillStyle = '#ffffff';
+            L09_Meadow.crc2.fill();
+            L09_Meadow.crc2.strokeStyle = '#ffffff';
+            L09_Meadow.crc2.stroke();
+            L09_Meadow.crc2.restore();
         };
         return Cloud;
-    }());
+    }(L09_Meadow.Movable));
     L09_Meadow.Cloud = Cloud;
 })(L09_Meadow || (L09_Meadow = {}));

@@ -1,66 +1,72 @@
 namespace L09_Meadow {
 
-    export class Cloud {
+    export class Cloud extends Movable {
         position: Vector;
         velocity: Vector;
+        size: Vector;
 
-        constructor(_size: number) {
+        constructor(_size: Vector, _position: Vector, _velocity: Vector, _x: number, _y: number) {
+
+            super(_size, _velocity, _position, _x, _y);
+
             console.log("Hier werden Wolken bewegt");
+
+
             this.position = new Vector(0, 0);
             this.velocity = new Vector(0, 0);
             this.velocity.random(100, 200);
+            this.size = _size;
+
 
         }
 
-        move(_timeslice: number): void {
+       /*  move(_timeslice: number): void {
             console.log("hier bewegt sich eine Wolke");
-            let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
-            offset.scale(_timeslice);
-            this.position.add(offset);
+            /* let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("#board"); */
+            /* let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D> canvas.getContext("2d"); */
 
-            if (this.position.x < 0)
+           /*  let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
+            offset.scale(_timeslice);
+            this.position.add(offset); */
+
+            /* if (this.position.x < 0)
                 this.position.x += crc2.canvas.width;
 
-            if (this.position.y / 2 < 0)
-                this.position.y += crc2.canvas.height;
+            if (this.position.y < 0)
+                this.position.y += crc2.canvas.height / golden;
 
             if (this.position.x > crc2.canvas.width)
                 this.position.x -= crc2.canvas.width;
 
-            if (this.position.y / 2 > crc2.canvas.height)
-                this.position.y -= crc2.canvas.height;
+            if (this.position.y > crc2.canvas.height / golden)
+                this.position.y -= crc2.canvas.height;   */
+        //} 
 
-        }
-        draw(): void {
 
-            function drawCloud(_position: Vector, _size: Vector): void {
+            draw(): void {
 
-                console.log("hier werden steine gemalt");
-                //nParticles ist die anzahl der Particel aus denen sich die Wole zusammensetzt
-                let nParticles: number = 5;
-                let radiusParticle: number = 60;
-                let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
-                let particle: Path2D = new Path2D();
-
-                particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI,);
-                gradient.addColorStop(0, "HSLA(295, 28%, 84%, 0.5)");
-                gradient.addColorStop(1, "HSLA(295, 28%, 84%, 0)");
-
-                crc2.save();
-                crc2.translate(_position.x, _position.y);
-                crc2.fillStyle = gradient;
-
-                for (let drawn: number = 0; drawn < nParticles; drawn++) {
-                    crc2.save();
-                    let x: number = (Math.random() - 0.5) * _size.x;
-                    let y: number = - (Math.random() * _size.y);
-                    crc2.translate(x, y);
-                    crc2.fill(particle);
-                    crc2.restore();
-                }
-                crc2.restore();
-            }
+                console.log("Wolken!");
             
+                crc2.save();
+                crc2.translate(this.position.x, this.position.y);
+
+                crc2.beginPath();
+                crc2.moveTo(170, 80);
+                crc2.bezierCurveTo(130, 100, 130, 150, 230, 150);
+                crc2.bezierCurveTo(250, 180, 320, 180, 340, 150);
+                crc2.bezierCurveTo(420, 150, 420, 120, 390, 100);
+                crc2.bezierCurveTo(430, 40, 370, 30, 340, 50);
+                crc2.bezierCurveTo(320, 5, 250, 20, 250, 50);
+                crc2.bezierCurveTo(200, 5, 150, 20, 170, 80);
+                crc2.closePath();
+                crc2.lineWidth = 5;
+                crc2.fillStyle = '#ffffff';
+                crc2.fill();
+                crc2.strokeStyle = '#ffffff';
+                crc2.stroke();
+
+                crc2.restore();
+
+            }
         }
     }
-}
