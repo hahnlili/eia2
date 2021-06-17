@@ -10,8 +10,10 @@ namespace L09_Meadow {
 
     let horizon: number;
 
-    let clouds: Cloud[] = [];
-    let bees: Bee[] = [];
+    /* let clouds: Cloud[] = [];
+    let bees: Bee[] = []; */
+
+    let movables: Movable[]=[];
 
     function handleLoad(_event: Event): void {
 
@@ -68,7 +70,7 @@ namespace L09_Meadow {
             
              console.log("wolke" + i); 
             let cloud: Cloud = new Cloud(position);
-            clouds.push(cloud);
+            movables.push(cloud);
             cloud.draw();
         }
     }
@@ -86,7 +88,7 @@ namespace L09_Meadow {
         
         for (let i: number = 0; i < Math.random()*1000; i++) {
             let bee: Bee = new Bee(position, velocity);
-            bees.push(bee);
+            movables.push(bee);
         }
     }
     //wofür genau ist das update?
@@ -95,11 +97,11 @@ namespace L09_Meadow {
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         crc2.putImageData(imageData, 0, 0);
 
-        for (let movable of clouds) {
+        for (let movable of movables) {
             movable.move(1 / 50);
             movable.draw();
         }
-        for (let bee of bees) {
+        for (let bee of movables) {
             bee.move(1 / 50);
             bee.draw();
         }

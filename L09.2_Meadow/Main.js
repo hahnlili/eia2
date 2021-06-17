@@ -5,8 +5,9 @@ var L09_Meadow;
     var imageData;
     L09_Meadow.golden = 0.62;
     var horizon;
-    var clouds = [];
-    var bees = [];
+    /* let clouds: Cloud[] = [];
+    let bees: Bee[] = []; */
+    var movables = [];
     function handleLoad(_event) {
         var canvas = document.querySelector("canvas");
         if (!canvas)
@@ -46,7 +47,7 @@ var L09_Meadow;
         for (var i = 0; i < 3; i++) {
             console.log("wolke" + i);
             var cloud = new L09_Meadow.Cloud(position);
-            clouds.push(cloud);
+            movables.push(cloud);
             cloud.draw();
         }
     }
@@ -59,7 +60,7 @@ var L09_Meadow;
         var velocity = new L09_Meadow.Vector(4, 0);
         for (var i = 0; i < Math.random() * 1000; i++) {
             var bee = new L09_Meadow.Bee(position, velocity);
-            bees.push(bee);
+            movables.push(bee);
         }
     }
     //wofür genau ist das update?
@@ -67,13 +68,13 @@ var L09_Meadow;
         console.log("Update");
         L09_Meadow.crc2.fillRect(0, 0, L09_Meadow.crc2.canvas.width, L09_Meadow.crc2.canvas.height);
         L09_Meadow.crc2.putImageData(imageData, 0, 0);
-        for (var _i = 0, clouds_1 = clouds; _i < clouds_1.length; _i++) {
-            var movable = clouds_1[_i];
+        for (var _i = 0, movables_1 = movables; _i < movables_1.length; _i++) {
+            var movable = movables_1[_i];
             movable.move(1 / 50);
             movable.draw();
         }
-        for (var _a = 0, bees_1 = bees; _a < bees_1.length; _a++) {
-            var bee = bees_1[_a];
+        for (var _a = 0, movables_2 = movables; _a < movables_2.length; _a++) {
+            var bee = movables_2[_a];
             bee.move(1 / 50);
             bee.draw();
         }
