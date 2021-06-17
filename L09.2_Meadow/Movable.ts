@@ -1,4 +1,4 @@
-namespace L09_Meadow {
+namespace L09_Meadow  {
 
     export class Movable {
         position: Vector;
@@ -6,7 +6,7 @@ namespace L09_Meadow {
         
 
         constructor(_size: Vector, _position: Vector, _velocity: Vector, _x: number, _y: number) {
-           // console.log("Movable");
+           // console.log("Movable constructor");
             this.position = new Vector(0, 0);
             this.velocity = new Vector(0, 0);
                        
@@ -14,9 +14,7 @@ namespace L09_Meadow {
 
         move(_timeslice: number): void {
             console.log("Movable move");
-            /* let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("#board"); */
-            /* let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D> canvas.getContext("2d"); */
-            
+          
             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
             offset.scale(_timeslice);
             this.position.add(offset);

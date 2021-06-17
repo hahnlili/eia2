@@ -27,25 +27,22 @@ var L09_Meadow;
             _this.size = _size;
             return _this;
         }
-        /*  move(_timeslice: number): void {
-             console.log("hier bewegt sich eine Wolke");
-             /* let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("#board"); */
-        /* let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D> canvas.getContext("2d"); */
-        /*  let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
-         offset.scale(_timeslice);
-         this.position.add(offset); */
-        /* if (this.position.x < 0)
-            this.position.x += crc2.canvas.width;
-
-        if (this.position.y < 0)
-            this.position.y += crc2.canvas.height / golden;
-
-        if (this.position.x > crc2.canvas.width)
-            this.position.x -= crc2.canvas.width;
-
-        if (this.position.y > crc2.canvas.height / golden)
-            this.position.y -= crc2.canvas.height;   */
-        //} 
+        Cloud.prototype.move = function (_timeslice) {
+            console.log("hier bewegt sich eine Wolke");
+            var canvas = document.querySelector("#board");
+            var crc2 = canvas.getContext("2d");
+            var offset = new L09_Meadow.Vector(this.velocity.x, this.velocity.y);
+            offset.scale(_timeslice);
+            this.position.add(offset);
+            if (this.position.x < 0)
+                this.position.x += crc2.canvas.width;
+            if (this.position.y < 200)
+                this.position.y += crc2.canvas.height / L09_Meadow.golden;
+            if (this.position.x > crc2.canvas.width)
+                this.position.x -= crc2.canvas.width;
+            if (this.position.y > crc2.canvas.height / L09_Meadow.golden)
+                this.position.y -= crc2.canvas.height;
+        };
         Cloud.prototype.draw = function () {
             console.log("Wolken!");
             L09_Meadow.crc2.save();

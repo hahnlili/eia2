@@ -16,8 +16,6 @@ var L09_Meadow;
         L09_Meadow.crc2.strokeStyle = "white";
         L09_Meadow.crc2.fillRect(0, 0, L09_Meadow.crc2.canvas.width, L09_Meadow.crc2.canvas.width);
         horizon = L09_Meadow.crc2.canvas.height * L09_Meadow.golden;
-        createBees(5);
-        createClouds(5);
         window.setInterval(update, 100);
         drawBackground();
         drawGrass();
@@ -36,6 +34,8 @@ var L09_Meadow;
             drawFMN(randomX + 0, randomY + horizon + 200);
         }
         imageData = L09_Meadow.crc2.getImageData(0, 0, canvas.width, canvas.height);
+        createBees(5);
+        createClouds(5);
     }
     function createClouds(_nClouds) {
         console.log("Wolken bedecken den Himmel");

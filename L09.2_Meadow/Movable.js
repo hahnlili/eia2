@@ -3,14 +3,12 @@ var L09_Meadow;
 (function (L09_Meadow) {
     var Movable = /** @class */ (function () {
         function Movable(_size, _position, _velocity, _x, _y) {
-            // console.log("Movable");
+            // console.log("Movable constructor");
             this.position = new L09_Meadow.Vector(0, 0);
             this.velocity = new L09_Meadow.Vector(0, 0);
         }
         Movable.prototype.move = function (_timeslice) {
             console.log("Movable move");
-            /* let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("#board"); */
-            /* let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D> canvas.getContext("2d"); */
             var offset = new L09_Meadow.Vector(this.velocity.x, this.velocity.y);
             offset.scale(_timeslice);
             this.position.add(offset);

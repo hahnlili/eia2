@@ -27,25 +27,23 @@ namespace L09_Meadow {
 
 
 
-        createBees(5);
-        createClouds(5);
         window.setInterval(update,100);
         drawBackground();
         drawGrass();
         drawSun(new Vector(300, 300));
         drawMountain(new Vector(0, horizon), 75, 200, "grey", "white");
         drawTree(new Vector(0, horizon), new Vector(3000, 50));
-       
+        
         
         //update();
-       
-
-
+        
+        
+        
         for (let index: number = 0; index < 200; index++) {
             let randomX: number = Math.floor(Math.random() * crc2.canvas.width);
             let randomY: number = Math.floor(Math.random() * 200);
             drawStar(randomX, randomY + horizon + 200);
-
+            
         }
         for (let index: number = 0; index < 200; index++) {
             let randomX: number = Math.floor(Math.random() * crc2.canvas.width);
@@ -54,6 +52,8 @@ namespace L09_Meadow {
         }
         
         imageData = crc2.getImageData(0, 0, canvas.width, canvas.height);
+        createBees(5);
+        createClouds(5);
     }
 
     function createClouds(_nClouds: number): void {
