@@ -5,10 +5,10 @@ namespace L09_Meadow  {
         velocity: Vector;
         
 
-        constructor(_size: Vector, _position: Vector, _velocity: Vector, _x: number, _y: number) {
+        constructor( _position: Vector, _velocity: Vector) {
            // console.log("Movable constructor");
-            this.position = new Vector(0, 0);
-            this.velocity = new Vector(0, 0);
+            this.position = new Vector(_position.x, _position.y);
+            this.velocity = new Vector(_velocity.x, _velocity.y);
                        
         }
 

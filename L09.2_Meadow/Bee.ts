@@ -1,18 +1,12 @@
 namespace L09_Meadow  {
 
     export class Bee extends Movable {
-        position: Vector;
-        velocity: Vector;
 
 
-        constructor(_position: Vector, _velocity: Vector, _size: Vector, _x: number, _y: number) {
-            super(_velocity, _position, _size, _x, _y);
+        constructor(_position: Vector, _velocity: Vector) {
+            super(_position, _velocity);
             console.log("Bienen kommen auch irgendwo her");
-            this.position = new Vector(0, 0);
-            this.velocity = new Vector(0, 0);
             this.velocity.random(100, 200);
-
-
         }
 
 /*         move(_timeslice: number): void {
@@ -36,7 +30,7 @@ namespace L09_Meadow  {
         } */
 
         draw(): void {
-            console.log("hier werden steine gemalt");
+            console.log("hier werden bienen gemalt");
             crc2.save();
        crc2.translate(this.position.x, this.position.y);
        

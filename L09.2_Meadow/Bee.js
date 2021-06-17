@@ -18,11 +18,9 @@ var L09_Meadow;
 (function (L09_Meadow) {
     var Bee = /** @class */ (function (_super) {
         __extends(Bee, _super);
-        function Bee(_position, _velocity, _size, _x, _y) {
-            var _this = _super.call(this, _velocity, _position, _size, _x, _y) || this;
+        function Bee(_position, _velocity) {
+            var _this = _super.call(this, _position, _velocity) || this;
             console.log("Bienen kommen auch irgendwo her");
-            _this.position = new L09_Meadow.Vector(0, 0);
-            _this.velocity = new L09_Meadow.Vector(0, 0);
             _this.velocity.random(100, 200);
             return _this;
         }
@@ -46,7 +44,7 @@ var L09_Meadow;
         
                 } */
         Bee.prototype.draw = function () {
-            console.log("hier werden steine gemalt");
+            console.log("hier werden bienen gemalt");
             L09_Meadow.crc2.save();
             L09_Meadow.crc2.translate(this.position.x, this.position.y);
             L09_Meadow.crc2.beginPath();

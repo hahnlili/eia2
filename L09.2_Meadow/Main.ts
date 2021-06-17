@@ -63,11 +63,11 @@ namespace L09_Meadow {
         let x: number = (0);
         let y: number = (150);
         let position: Vector = new Vector(x, y);
-        let velocity: Vector = new Vector(4, 0);
-        for (let i: number = 0; i < 3; i++) {
+        
+                for (let i: number = 0; i < 3; i++) {
             
-             console.log("wokle" + i); 
-            let cloud: Cloud = new Cloud(position, size, velocity, x, y);
+             console.log("wolke" + i); 
+            let cloud: Cloud = new Cloud(position);
             clouds.push(cloud);
             cloud.draw();
         }
@@ -85,7 +85,7 @@ namespace L09_Meadow {
         let velocity: Vector = new Vector(4, 0);
         
         for (let i: number = 0; i < Math.random()*1000; i++) {
-            let bee: Bee = new Bee(position, size, velocity, x, y);
+            let bee: Bee = new Bee(position, velocity);
             bees.push(bee);
         }
     }

@@ -2,10 +2,10 @@
 var L09_Meadow;
 (function (L09_Meadow) {
     var Movable = /** @class */ (function () {
-        function Movable(_size, _position, _velocity, _x, _y) {
+        function Movable(_position, _velocity) {
             // console.log("Movable constructor");
-            this.position = new L09_Meadow.Vector(0, 0);
-            this.velocity = new L09_Meadow.Vector(0, 0);
+            this.position = new L09_Meadow.Vector(_position.x, _position.y);
+            this.velocity = new L09_Meadow.Vector(_velocity.x, _velocity.y);
         }
         Movable.prototype.move = function (_timeslice) {
             console.log("Movable move");

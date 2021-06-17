@@ -43,10 +43,9 @@ var L09_Meadow;
         var x = (0);
         var y = (150);
         var position = new L09_Meadow.Vector(x, y);
-        var velocity = new L09_Meadow.Vector(4, 0);
         for (var i = 0; i < 3; i++) {
-            console.log("wokle" + i);
-            var cloud = new L09_Meadow.Cloud(position, size, velocity, x, y);
+            console.log("wolke" + i);
+            var cloud = new L09_Meadow.Cloud(position);
             clouds.push(cloud);
             cloud.draw();
         }
@@ -59,7 +58,7 @@ var L09_Meadow;
         var position = new L09_Meadow.Vector(x, y);
         var velocity = new L09_Meadow.Vector(4, 0);
         for (var i = 0; i < Math.random() * 1000; i++) {
-            var bee = new L09_Meadow.Bee(position, size, velocity, x, y);
+            var bee = new L09_Meadow.Bee(position, velocity);
             bees.push(bee);
         }
     }

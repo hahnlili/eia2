@@ -1,45 +1,32 @@
 namespace L09_Meadow  {
 
     export class Cloud extends Movable {
-        position: Vector;
-        velocity: Vector;
-        size: Vector;
+        
+        constructor(_position: Vector) {
 
-        constructor(_size: Vector, _position: Vector, _velocity: Vector, _x: number, _y: number) {
-
-            super(_size, _velocity, _position, _x, _y);
+            super(_position, new Vector (0,0));
 
             console.log("Hier werden Wolken bewegt");
 
-
-            this.position = new Vector(0, 0);
-            this.velocity = new Vector(0, 0);
             this.velocity.random(100, 200);
-            this.size = _size;
-
-
         }
 
          move(_timeslice: number): void {
             console.log("hier bewegt sich eine Wolke");
-             let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("#board"); 
+            let canvas: HTMLCanvasElement | null = document.querySelector("canvas")!;
              let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D> canvas.getContext("2d"); 
 
-             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
+             let offset: Vector = new Vector(this.velocity.x, 0);
             offset.scale(_timeslice);
             this.position.add(offset); 
 
             if (this.position.x < 0)
                 this.position.x += crc2.canvas.width;
 
-            if (this.position.y < 200)
-                this.position.y += crc2.canvas.height / golden;
-
             if (this.position.x > crc2.canvas.width)
                 this.position.x -= crc2.canvas.width;
 
-            if (this.position.y > crc2.canvas.height / golden)
-                this.position.y -= crc2.canvas.height;   
+            
         } 
 
 

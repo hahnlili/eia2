@@ -18,30 +18,23 @@ var L09_Meadow;
 (function (L09_Meadow) {
     var Cloud = /** @class */ (function (_super) {
         __extends(Cloud, _super);
-        function Cloud(_size, _position, _velocity, _x, _y) {
-            var _this = _super.call(this, _size, _velocity, _position, _x, _y) || this;
+        function Cloud(_position) {
+            var _this = _super.call(this, _position, new L09_Meadow.Vector(0, 0)) || this;
             console.log("Hier werden Wolken bewegt");
-            _this.position = new L09_Meadow.Vector(0, 0);
-            _this.velocity = new L09_Meadow.Vector(0, 0);
             _this.velocity.random(100, 200);
-            _this.size = _size;
             return _this;
         }
         Cloud.prototype.move = function (_timeslice) {
             console.log("hier bewegt sich eine Wolke");
-            var canvas = document.querySelector("#board");
+            var canvas = document.querySelector("canvas");
             var crc2 = canvas.getContext("2d");
-            var offset = new L09_Meadow.Vector(this.velocity.x, this.velocity.y);
+            var offset = new L09_Meadow.Vector(this.velocity.x, 0);
             offset.scale(_timeslice);
             this.position.add(offset);
             if (this.position.x < 0)
                 this.position.x += crc2.canvas.width;
-            if (this.position.y < 200)
-                this.position.y += crc2.canvas.height / L09_Meadow.golden;
             if (this.position.x > crc2.canvas.width)
                 this.position.x -= crc2.canvas.width;
-            if (this.position.y > crc2.canvas.height / L09_Meadow.golden)
-                this.position.y -= crc2.canvas.height;
         };
         Cloud.prototype.draw = function () {
             console.log("Wolken!");
