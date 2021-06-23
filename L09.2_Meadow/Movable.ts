@@ -12,7 +12,7 @@ namespace L09_Meadow  {
                        
         }
 
-        move(_timeslice: number): void {
+       public move(_timeslice: number): void {
             console.log("Movable move");
           
             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);

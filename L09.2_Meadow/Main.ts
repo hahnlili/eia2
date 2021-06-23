@@ -13,7 +13,13 @@ namespace L09_Meadow {
     /* let clouds: Cloud[] = [];
     let bees: Bee[] = []; */
 
-    let movables: Movable[]=[];
+    let movables: Movable[] = [];
+
+    let flowers: Flower[] = [];
+
+    let nectarSpeed: number = 0.5;
+
+    let widthMultiplier =2.50;
 
     function handleLoad(_event: Event): void {
 
@@ -28,53 +34,63 @@ namespace L09_Meadow {
         horizon = crc2.canvas.height * golden;
 
 
-
-        window.setInterval(update,100);
         drawBackground();
         drawGrass();
         drawSun(new Vector(300, 300));
         drawMountain(new Vector(0, horizon), 75, 200, "grey", "white");
         drawTree(new Vector(0, horizon), new Vector(3000, 50));
+
+        /*         for (let index: number = 0; index < 200; index++) {
+                    let randomX: number = Math.floor(Math.random() * crc2.canvas.width);
+                    let randomY: number = Math.floor(Math.random() * 200);
+                    drawStar(randomX, randomY + horizon + 200);
+                }
         
-        
-        //update();
-        
-        
-        
-        for (let index: number = 0; index < 200; index++) {
-            let randomX: number = Math.floor(Math.random() * crc2.canvas.width);
-            let randomY: number = Math.floor(Math.random() * 200);
-            drawStar(randomX, randomY + horizon + 200);
-            
-        }
-        for (let index: number = 0; index < 200; index++) {
-            let randomX: number = Math.floor(Math.random() * crc2.canvas.width);
-            let randomY: number = Math.floor(Math.random() * 200);
-            drawFMN(randomX + 0, randomY + horizon + 200);
-        }
-        
+                for (let index: number = 0; index < 200; index++) {
+                    let randomX: number = Math.floor(Math.random() * crc2.canvas.width);
+                    let randomY: number = Math.floor(Math.random() * 200);
+                    drawFMN(randomX + 0, randomY + horizon + 200);
+                } */
+
+        createFlowers(50);
         imageData = crc2.getImageData(0, 0, canvas.width, canvas.height);
-        createBees(5);
+        createBees(5);//die (5) ist das nBees
         createClouds(5);
+
+        window.setInterval(update, 100);
+    }
+
+    function createFlowers(_nFlowers: number): void {
+        /* console.log("hallo roland"); */
+
+        for (let index: number = 0; index < _nFlowers; index++) {
+            let randomX: number = Math.floor(Math.random() * crc2.canvas.width);
+            let randomY: number = Math.floor(Math.random() * 100);
+            let position: Vector = new Vector(randomX, randomY + horizon + 200);
+            //console.log(position);
+            let tempFlower: Flower = new Flower(position);
+            flowers.push(tempFlower);
+            tempFlower.draw();
+
+        }
     }
 
     function createClouds(_nClouds: number): void {
         console.log("Wolken bedecken den Himmel");
-        
+
         let size: Vector = new Vector(100, 200);
         let x: number = (0);
         let y: number = (150);
         let position: Vector = new Vector(x, y);
-        
-                for (let i: number = 0; i < 3; i++) {
-            
-             console.log("wolke" + i); 
+
+        for (let i: number = 0; i < 3; i++) {
+
+            console.log("wolke" + i);
             let cloud: Cloud = new Cloud(position);
             movables.push(cloud);
             cloud.draw();
         }
     }
-
 
 
     function createBees(_nBees: number): void {
@@ -85,12 +101,14 @@ namespace L09_Meadow {
         let y: number = (150);
         let position: Vector = new Vector(x, y);
         let velocity: Vector = new Vector(4, 0);
-        
-        for (let i: number = 0; i < Math.random()*1000; i++) {
+
+        for (let i: number = 0; i < Math.random() * 1000; i++) {
             let bee: Bee = new Bee(position, velocity);
             movables.push(bee);
         }
     }
+
+
     //wofür genau ist das update?
     function update(): void {
         console.log("Update");
@@ -105,8 +123,21 @@ namespace L09_Meadow {
             bee.move(1 / 50);
             bee.draw();
         }
+        for (let i: number = 0; i < flowers.length; i++) {
+            flowers[i].refillNectar(nectarSpeed);
+        }
+
+        drawProgressBar();
     }
 
+    function drawProgressBar(): void {
+        crc2.fillStyle="#000000";
+        crc2.fillRect(50, 50, 100*widthMultiplier, 20);
+
+        crc2.fillStyle="#ffffff";
+        crc2.fillRect(50, 50, flowers[0].getNectarAmount()*widthMultiplier, 20);
+
+    }
 
     function drawTree(_position: Vector, _size: Vector): void {
         console.log("Oh, ein wald!");
@@ -154,58 +185,6 @@ namespace L09_Meadow {
         crc2.closePath();
 
     }
-
-    function drawFMN(_x: number, _y: number): void {
-        crc2.moveTo(_x, _y);
-        crc2.fillStyle = "darkgreen";
-        crc2.beginPath();
-        crc2.moveTo(_x, _y)
-        crc2.lineTo(_x, _y - 65);
-        crc2.closePath();
-        crc2.stroke();
-
-
-        crc2.beginPath();
-        crc2.arc(_x, _y - 70, 10, 4, Math.PI);
-        crc2.closePath();
-        crc2.fillStyle = "#1C4573";
-        crc2.fill();
-    }
-
-
-
-    function drawStar(_x: number, _y: number): void {
-        crc2.save();
-        crc2.moveTo(_x, _y);
-        crc2.fillStyle = "darkgreen";
-        crc2.beginPath();
-        crc2.moveTo(_x, _y)
-        crc2.lineTo(_x, _y - 65);
-        crc2.stroke();
-        crc2.closePath();
-
-        // das hier hab ich wiederum aus dem internet geklaut und angepasst. Also doch schon irgendwie auch mein verdienst
-        // aber du darfst mir morgen gern erklären, warum nur eine sternenblume erstellt wird... 
-        let r: number = 10;
-        let p: number = 10;
-        let m: number = 0.5;
-
-        crc2.fillStyle = "#fdff92";
-        crc2.beginPath();
-        crc2.translate(_x, _y - 65);
-        crc2.moveTo(0, 0 - r);
-        for (var i = 0; i < p; i++) {
-            crc2.rotate(Math.PI / p);
-            crc2.lineTo(0, 0 - (r * m));
-            crc2.rotate(Math.PI / p);
-            crc2.lineTo(0, 0 - r);
-        }
-        crc2.closePath();
-        crc2.fill();
-        crc2.restore();
-    }
-
-
 
     function drawBackground(): void {
         console.log("Background");
@@ -303,4 +282,6 @@ namespace L09_Meadow {
 
         crc2.restore();
     }
+
+
 }

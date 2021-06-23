@@ -29,7 +29,7 @@ namespace L09_Meadow  {
 
         } */
 
-        draw(): void {
+       public draw(): void {
             console.log("hier werden bienen gemalt");
             crc2.save();
        crc2.translate(this.position.x, this.position.y);

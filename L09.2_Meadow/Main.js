@@ -8,6 +8,9 @@ var L09_Meadow;
     /* let clouds: Cloud[] = [];
     let bees: Bee[] = []; */
     var movables = [];
+    var flowers = [];
+    var nectarSpeed = 0.5;
+    var widthMultiplier = 2.50;
     function handleLoad(_event) {
         var canvas = document.querySelector("canvas");
         if (!canvas)
@@ -17,26 +20,39 @@ var L09_Meadow;
         L09_Meadow.crc2.strokeStyle = "white";
         L09_Meadow.crc2.fillRect(0, 0, L09_Meadow.crc2.canvas.width, L09_Meadow.crc2.canvas.width);
         horizon = L09_Meadow.crc2.canvas.height * L09_Meadow.golden;
-        window.setInterval(update, 100);
         drawBackground();
         drawGrass();
         drawSun(new L09_Meadow.Vector(300, 300));
         drawMountain(new L09_Meadow.Vector(0, horizon), 75, 200, "grey", "white");
         drawTree(new L09_Meadow.Vector(0, horizon), new L09_Meadow.Vector(3000, 50));
-        //update();
-        for (var index = 0; index < 200; index++) {
-            var randomX = Math.floor(Math.random() * L09_Meadow.crc2.canvas.width);
-            var randomY = Math.floor(Math.random() * 200);
-            drawStar(randomX, randomY + horizon + 200);
-        }
-        for (var index = 0; index < 200; index++) {
-            var randomX = Math.floor(Math.random() * L09_Meadow.crc2.canvas.width);
-            var randomY = Math.floor(Math.random() * 200);
-            drawFMN(randomX + 0, randomY + horizon + 200);
-        }
+        /*         for (let index: number = 0; index < 200; index++) {
+                    let randomX: number = Math.floor(Math.random() * crc2.canvas.width);
+                    let randomY: number = Math.floor(Math.random() * 200);
+                    drawStar(randomX, randomY + horizon + 200);
+                }
+        
+                for (let index: number = 0; index < 200; index++) {
+                    let randomX: number = Math.floor(Math.random() * crc2.canvas.width);
+                    let randomY: number = Math.floor(Math.random() * 200);
+                    drawFMN(randomX + 0, randomY + horizon + 200);
+                } */
+        createFlowers(50);
         imageData = L09_Meadow.crc2.getImageData(0, 0, canvas.width, canvas.height);
-        createBees(5);
+        createBees(5); //die (5) ist das nBees
         createClouds(5);
+        window.setInterval(update, 100);
+    }
+    function createFlowers(_nFlowers) {
+        /* console.log("hallo roland"); */
+        for (var index = 0; index < _nFlowers; index++) {
+            var randomX = Math.floor(Math.random() * L09_Meadow.crc2.canvas.width);
+            var randomY = Math.floor(Math.random() * 100);
+            var position = new L09_Meadow.Vector(randomX, randomY + horizon + 200);
+            //console.log(position);
+            var tempFlower = new L09_Meadow.Flower(position);
+            flowers.push(tempFlower);
+            tempFlower.draw();
+        }
     }
     function createClouds(_nClouds) {
         console.log("Wolken bedecken den Himmel");
@@ -78,6 +94,16 @@ var L09_Meadow;
             bee.move(1 / 50);
             bee.draw();
         }
+        for (var i = 0; i < flowers.length; i++) {
+            flowers[i].refillNectar(nectarSpeed);
+        }
+        drawProgressBar();
+    }
+    function drawProgressBar() {
+        L09_Meadow.crc2.fillStyle = "#000000";
+        L09_Meadow.crc2.fillRect(50, 50, 100 * widthMultiplier, 20);
+        L09_Meadow.crc2.fillStyle = "#ffffff";
+        L09_Meadow.crc2.fillRect(50, 50, flowers[0].getNectarAmount() * widthMultiplier, 20);
     }
     function drawTree(_position, _size) {
         console.log("Oh, ein wald!");
@@ -113,48 +139,6 @@ var L09_Meadow;
         L09_Meadow.crc2.fill();
         L09_Meadow.crc2.fillStyle = "#1A2D19";
         L09_Meadow.crc2.closePath();
-    }
-    function drawFMN(_x, _y) {
-        L09_Meadow.crc2.moveTo(_x, _y);
-        L09_Meadow.crc2.fillStyle = "darkgreen";
-        L09_Meadow.crc2.beginPath();
-        L09_Meadow.crc2.moveTo(_x, _y);
-        L09_Meadow.crc2.lineTo(_x, _y - 65);
-        L09_Meadow.crc2.closePath();
-        L09_Meadow.crc2.stroke();
-        L09_Meadow.crc2.beginPath();
-        L09_Meadow.crc2.arc(_x, _y - 70, 10, 4, Math.PI);
-        L09_Meadow.crc2.closePath();
-        L09_Meadow.crc2.fillStyle = "#1C4573";
-        L09_Meadow.crc2.fill();
-    }
-    function drawStar(_x, _y) {
-        L09_Meadow.crc2.save();
-        L09_Meadow.crc2.moveTo(_x, _y);
-        L09_Meadow.crc2.fillStyle = "darkgreen";
-        L09_Meadow.crc2.beginPath();
-        L09_Meadow.crc2.moveTo(_x, _y);
-        L09_Meadow.crc2.lineTo(_x, _y - 65);
-        L09_Meadow.crc2.stroke();
-        L09_Meadow.crc2.closePath();
-        // das hier hab ich wiederum aus dem internet geklaut und angepasst. Also doch schon irgendwie auch mein verdienst
-        // aber du darfst mir morgen gern erklären, warum nur eine sternenblume erstellt wird... 
-        var r = 10;
-        var p = 10;
-        var m = 0.5;
-        L09_Meadow.crc2.fillStyle = "#fdff92";
-        L09_Meadow.crc2.beginPath();
-        L09_Meadow.crc2.translate(_x, _y - 65);
-        L09_Meadow.crc2.moveTo(0, 0 - r);
-        for (var i = 0; i < p; i++) {
-            L09_Meadow.crc2.rotate(Math.PI / p);
-            L09_Meadow.crc2.lineTo(0, 0 - (r * m));
-            L09_Meadow.crc2.rotate(Math.PI / p);
-            L09_Meadow.crc2.lineTo(0, 0 - r);
-        }
-        L09_Meadow.crc2.closePath();
-        L09_Meadow.crc2.fill();
-        L09_Meadow.crc2.restore();
     }
     function drawBackground() {
         console.log("Background");
