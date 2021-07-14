@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="Fußball.css" type="text/css" media="screen">
+    <script src="Main.js"></script>
+    <script src="Movable.js"></script>
+    <script src="Vector.js"></script>
+    <script src="Field.js"></script>
+    <script src="Team.js"></script>
+    <script src="Player.js"></script>
+    <script src="Ball.js"></script>
+    <script src="Referee.js"></script>
+    <script src="Position.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fifa auf Wish bestellt</title>
+</head>
+
+<body>
+    <header>
+        <h1>Fifa auf Wish bestellt</h1>
+
+        <div id="form">
+            <span id="stopAndGo">
+                <button>Pause</button>
+                <button>Weiter</button>
+            </span>
+
+            <span id="colorTeamOne">
+                <input type="color" id="shirtColorOne" name="shirtColorTwo" value="#e66465">
+                <label for="head">Shirt-Color 1</label>
+            </span>
+
+            <span id="colorTeamTwo">
+                <input type="color" id="shirtColorTwo" name="shirtColorTwo" value="#e66465">
+                <label for="head">Shirt-Color 2</label>
+            </span>
+
+            <span id="slider">
+                <span>
+                    Unpräzise
+                    <input type="range" name="precision" min="0.9" max="1.1" id="precision" step="0.01">
+                    Präzise
+                </span>
+            </span>
+
+            <span id="speed">
+                <span>
+                    Langsam
+                    <input type="range" name="speed" min="1" max="10" id="speed" step="1">
+                    Schnell
+                </span>
+            </span>
+
+        </div>
+
+    </header>
+    <span id="teamBunt"></span>
+    <span id="field"><canvas width="1500px" height="900px"></canvas></span>
+    <span id="teamGrau"></span>
+
+    <footer>
+        <span id="bunt"></span>
+        <span id="time"></span>
+        <span id="property"></span>
+        <span id="grau"></span>
+    </footer>
+
+</body>
+
+
+</html>

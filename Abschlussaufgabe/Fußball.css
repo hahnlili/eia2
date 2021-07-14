@@ -1,0 +1,49 @@
+header{
+    width: 1900px;
+    height: 100px;
+    position: relative;
+    background-color: blanchedalmond;
+    margin-bottom: 3px;
+}
+
+body{
+    align-content: inherit;
+    background-color: grey;
+}
+#teamBunt{
+    float: left;
+    position: relative;
+    width: 200px;
+    height: 900px;
+    background-color: blanchedalmond;
+}
+
+#field{
+    float:left;
+}
+
+canvas{
+    
+    position:relative;
+}
+#teamGrau{
+    float: left;
+    position: relative;
+    width: 200px;
+    height: 900px;
+
+    background-color: blanchedalmond;
+}
+
+footer{
+    height: 200px;
+    width: 1900px;
+    position: absolute;
+    margin-top: 903px;
+    /* float: left */;
+    background-color: blanchedalmond;
+}
+
+#stopAndGo{
+    float: right;
+}
