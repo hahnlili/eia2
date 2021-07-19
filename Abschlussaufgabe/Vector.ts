@@ -17,12 +17,12 @@ namespace Soccer {
 
         }
 
-        public add(_vector: Vector): void {
+        /* public add(_vector: Vector): void {
             this.x += _vector.x;
             this.y += _vector.y;
             this.calcLength();
 
-        }
+        } */
 
         public distance(_factor: number): void {
             this.x *= _factor;
@@ -35,34 +35,38 @@ namespace Soccer {
             return tempVector;
         }
         
-        public static getDifference(_v0: Vector, _v1: Vector): Vector {
+        /* public static getDifference(_v0: Vector, _v1: Vector): Vector {
             let tempVector: Vector = new Vector(0, 0);
             tempVector.set(_v0.x - _v1.x, _v0.y - _v1.y);
             return tempVector;
-        }
+        } */
         public static getSum(_v0: Vector, _v1: Vector): Vector {
             let tempVector: Vector = new Vector(0, 0);
             tempVector.set(_v0.x + _v1.x, _v0.y + _v1.y);
             return tempVector;
         }
+        
         public static getScaled(_v: Vector, _scale: number): Vector {
             let tempVector: Vector = new Vector(0, 0);
             tempVector.set(_v.x * _scale, _v.y * _scale);
             return tempVector;
         }
-        public static getLength(_vector: Vector): number {
+
+        /* public static getLength(_vector: Vector): number {
             let templength: number;
             templength = Math.sqrt((_vector.x * _vector.x) + (_vector.y * _vector.y));
             return templength;
-        }
+        } */
+        
         public static getUberVector(_length: number, _direction: Vector): Vector {
             let tempVector: Vector = new Vector(_direction.x / (_direction.length), _direction.y / (_direction.length));
             tempVector = this.getScaled(tempVector, _length);
             return tempVector;
         }
-        public clone(): Vector {
+
+        /* public clone(): Vector {
             return new Vector(this.x, this.y);
-        }
+        } */
 
         private calcLength(): void {
             this.length = Math.sqrt((this.x * this.x) + (this.y * this.y));

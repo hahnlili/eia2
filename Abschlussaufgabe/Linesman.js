@@ -16,27 +16,22 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Soccer;
 (function (Soccer) {
-    var Referee = /** @class */ (function (_super) {
-        __extends(Referee, _super);
-        function Referee() {
+    var Linesman = /** @class */ (function (_super) {
+        __extends(Linesman, _super);
+        function Linesman(_xMin, _xMax, _y) {
             var _this = _super.call(this) || this;
-            _this.refereeStart = new Soccer.Vector(Soccer.crc2.canvas.width * 0.5, Soccer.crc2.canvas.height * 0.9);
-            _this.position.x = _this.refereeStart.x;
-            _this.position.y = _this.refereeStart.y;
+            _this.position.x = _xMax;
+            _this.position.y = _y;
+            _this.xMax = _xMax;
+            _this.xMin = _xMin;
             return _this;
         }
-        Referee.prototype.move = function (_timeslice) {
-            //richtung
-            var a = Soccer.ball.position.x - this.refereeStart.x;
-            var b = Soccer.ball.position.y - this.refereeStart.y;
-            //abstand
-            var ballDistance = Math.sqrt((a * a) + (b * b));
-            var dirX = (Soccer.ball.position.x + 200) - this.position.x;
-            var dirY = (Soccer.ball.position.y + 200) - this.position.y;
-            this.position.x = this.position.x + dirX / 3;
-            this.position.y = this.position.y + dirY / 3;
+        Linesman.prototype.move = function (_timeslice) {
+            if (Soccer.ball.position.x <= this.xMax && Soccer.ball.position.x >= this.xMin) {
+                this.position.x = Soccer.ball.position.x;
+            }
         };
-        Referee.prototype.draw = function () {
+        Linesman.prototype.draw = function () {
             //save speichert den aktuellen stand.
             Soccer.crc2.save();
             //hier wirds positioniert
@@ -45,18 +40,18 @@ var Soccer;
             Soccer.crc2.beginPath();
             Soccer.crc2.arc(0, 30, 30, 0, Math.PI, true);
             Soccer.crc2.closePath();
-            Soccer.crc2.fillStyle = "black";
+            Soccer.crc2.fillStyle = "blue";
             Soccer.crc2.fill();
             //Head
             Soccer.crc2.beginPath();
             Soccer.crc2.arc(0, -10, 15, 0, 2 * Math.PI);
             Soccer.crc2.closePath();
-            Soccer.crc2.fillStyle = "black";
+            Soccer.crc2.fillStyle = "blue";
             Soccer.crc2.fill();
             //ursprungs stand restored, nur dann im nächsten Schritt an andere position translated
             Soccer.crc2.restore();
         };
-        return Referee;
+        return Linesman;
     }(Soccer.Movable));
-    Soccer.Referee = Referee;
+    Soccer.Linesman = Linesman;
 })(Soccer || (Soccer = {}));

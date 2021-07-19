@@ -14,11 +14,12 @@ var Soccer;
             this.y = _y;
             this.calcLength();
         };
-        Vector.prototype.add = function (_vector) {
+        /* public add(_vector: Vector): void {
             this.x += _vector.x;
             this.y += _vector.y;
             this.calcLength();
-        };
+
+        } */
         Vector.prototype.distance = function (_factor) {
             this.x *= _factor;
             this.y *= _factor;
@@ -28,11 +29,11 @@ var Soccer;
             tempVector.set(_min + Math.random() * (_max - _min), _min + Math.random() * (_max - _min));
             return tempVector;
         };
-        Vector.getDifference = function (_v0, _v1) {
-            var tempVector = new Vector(0, 0);
+        /* public static getDifference(_v0: Vector, _v1: Vector): Vector {
+            let tempVector: Vector = new Vector(0, 0);
             tempVector.set(_v0.x - _v1.x, _v0.y - _v1.y);
             return tempVector;
-        };
+        } */
         Vector.getSum = function (_v0, _v1) {
             var tempVector = new Vector(0, 0);
             tempVector.set(_v0.x + _v1.x, _v0.y + _v1.y);
@@ -43,19 +44,19 @@ var Soccer;
             tempVector.set(_v.x * _scale, _v.y * _scale);
             return tempVector;
         };
-        Vector.getLength = function (_vector) {
-            var templength;
+        /* public static getLength(_vector: Vector): number {
+            let templength: number;
             templength = Math.sqrt((_vector.x * _vector.x) + (_vector.y * _vector.y));
             return templength;
-        };
+        } */
         Vector.getUberVector = function (_length, _direction) {
             var tempVector = new Vector(_direction.x / (_direction.length), _direction.y / (_direction.length));
             tempVector = this.getScaled(tempVector, _length);
             return tempVector;
         };
-        Vector.prototype.clone = function () {
+        /* public clone(): Vector {
             return new Vector(this.x, this.y);
-        };
+        } */
         Vector.prototype.calcLength = function () {
             this.length = Math.sqrt((this.x * this.x) + (this.y * this.y));
         };

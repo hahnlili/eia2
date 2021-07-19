@@ -1,6 +1,6 @@
 header{
     width: 1900px;
-    height: 100px;
+    height: 150px;
     position: relative;
     background-color: blanchedalmond;
     margin-bottom: 3px;
@@ -46,4 +46,20 @@ footer{
 
 #stopAndGo{
     float: right;
+}
+
+#goals{
+    width: 400px;
+    margin-left: 1000px;
+    font-size: 40px;
+    align-content: center;
+}
+#goalsOne{
+    float: right;
+    margin-right: 50px;
+}
+#goalsTwo{
+
+    float: left;
+    margin-left: 50px;
 }

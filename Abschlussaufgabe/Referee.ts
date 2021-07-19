@@ -2,14 +2,32 @@ namespace Soccer {
 
     export class Referee extends Movable {
 
-        public refereePosition: Vector = new Vector(0, 0);
+        private refereeStart: Vector = new Vector(crc2.canvas.width * 0.5, crc2.canvas.height * 0.9);
+
 
         constructor() {
             super();
+
+            this.position.x = this.refereeStart.x;
+            this.position.y = this.refereeStart.y;
+
         }
 
         move(_timeslice: number): void {
+            
+            //richtung
+            let a = ball.position.x - this.refereeStart.x;
+            let b = ball.position.y - this.refereeStart.y;
 
+            //abstand
+            let ballDistance = Math.sqrt((a * a) + (b * b));
+
+            let dirX = (ball.position.x + 200) - this.position.x;
+            let dirY = (ball.position.y + 200) - this.position.y;
+
+
+            this.position.x = this.position.x + dirX / 3;
+            this.position.y = this.position.y + dirY / 3;
         }
 
         public draw(): void {

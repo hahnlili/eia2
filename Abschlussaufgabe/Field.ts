@@ -10,6 +10,7 @@ namespace Soccer {
             this.crc2 = _crc2;
         }
 
+        
         /* Public weil mein drauf zugreifen darf */
         public draw(): void {
 

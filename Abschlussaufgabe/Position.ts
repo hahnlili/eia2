@@ -27,31 +27,31 @@ namespace Soccer {
                         x = crc2.canvas.width * 0.08;
                         break;
                     case 1:
-                        x = crc2.canvas.width * 0.1;
+                        x = crc2.canvas.width * 0.9;
                         break;
                     case 2:
                         x = crc2.canvas.width * 0.2;
                         break;
                     case 3:
-                        x = crc2.canvas.width * 0.2;
+                        x = crc2.canvas.width * 0.9;
                         break;
                     case 4:
                         x = crc2.canvas.width * 0.1;
                         break;
                     case 5:
-                        x = crc2.canvas.width * 0.4;
+                        x = crc2.canvas.width * 0.6;
                         break;
                     case 6:
                         x = crc2.canvas.width * 0.35;
                         break;
                     case 7:
-                        x = crc2.canvas.width * 0.35;
+                        x = crc2.canvas.width * 0.65;
                         break;
                     case 8:
                         x = crc2.canvas.width * 0.4;
                         break;
                     case 9:
-                        x = crc2.canvas.width * 0.275;
+                        x = crc2.canvas.width *0.725;
                         break;
                     case 10:
                         x = crc2.canvas.width * 0.4;
@@ -65,7 +65,7 @@ namespace Soccer {
                         x = crc2.canvas.width * 0.92;
                         break;
                     case 1:
-                        x = crc2.canvas.width * 0.9;
+                        x = crc2.canvas.width * 0.1;
                         break;
                     case 2:
                         x = crc2.canvas.width * 0.8;
@@ -74,22 +74,22 @@ namespace Soccer {
                         x = crc2.canvas.width * 0.8;
                         break;
                     case 4:
-                        x = crc2.canvas.width * 0.9;
+                        x = crc2.canvas.width * 0.2;
                         break;
                     case 5:
-                        x = crc2.canvas.width * 0.6;
+                        x = crc2.canvas.width * 0.4;
                         break;
                     case 6:
                         x = crc2.canvas.width * 0.65;
                         break;
                     case 7:
-                        x = crc2.canvas.width * 0.65;
+                        x = crc2.canvas.width * 0.35;
                         break;
                     case 8:
                         x = crc2.canvas.width * 0.6;
                         break;
                     case 9:
-                        x = crc2.canvas.width *0.725;
+                        x = crc2.canvas.width * 0.275;
                         break;
                     case 10:
                         x = crc2.canvas.width * 0.6;
@@ -118,7 +118,7 @@ namespace Soccer {
                         y = crc2.canvas.height * 0.7;
                         break;
                     case 4:
-                        y = crc2.canvas.height * 0.9;
+                        y = crc2.canvas.height * 0.7;
                         break;
                     case 5:
                         y = crc2.canvas.height * 0.1;
@@ -152,7 +152,7 @@ namespace Soccer {
                         y = crc2.canvas.height * 0.3;
                         break;
                     case 3:
-                        y = crc2.canvas.height * 0.7;
+                        y = crc2.canvas.height * 0.9;
                         break;
                     case 4:
                         y = crc2.canvas.height * 0.9;

@@ -21,31 +21,31 @@ var Soccer;
                         x = Soccer.crc2.canvas.width * 0.08;
                         break;
                     case 1:
-                        x = Soccer.crc2.canvas.width * 0.1;
+                        x = Soccer.crc2.canvas.width * 0.9;
                         break;
                     case 2:
                         x = Soccer.crc2.canvas.width * 0.2;
                         break;
                     case 3:
-                        x = Soccer.crc2.canvas.width * 0.2;
+                        x = Soccer.crc2.canvas.width * 0.9;
                         break;
                     case 4:
                         x = Soccer.crc2.canvas.width * 0.1;
                         break;
                     case 5:
-                        x = Soccer.crc2.canvas.width * 0.4;
+                        x = Soccer.crc2.canvas.width * 0.6;
                         break;
                     case 6:
                         x = Soccer.crc2.canvas.width * 0.35;
                         break;
                     case 7:
-                        x = Soccer.crc2.canvas.width * 0.35;
+                        x = Soccer.crc2.canvas.width * 0.65;
                         break;
                     case 8:
                         x = Soccer.crc2.canvas.width * 0.4;
                         break;
                     case 9:
-                        x = Soccer.crc2.canvas.width * 0.275;
+                        x = Soccer.crc2.canvas.width * 0.725;
                         break;
                     case 10:
                         x = Soccer.crc2.canvas.width * 0.4;
@@ -59,7 +59,7 @@ var Soccer;
                         x = Soccer.crc2.canvas.width * 0.92;
                         break;
                     case 1:
-                        x = Soccer.crc2.canvas.width * 0.9;
+                        x = Soccer.crc2.canvas.width * 0.1;
                         break;
                     case 2:
                         x = Soccer.crc2.canvas.width * 0.8;
@@ -68,22 +68,22 @@ var Soccer;
                         x = Soccer.crc2.canvas.width * 0.8;
                         break;
                     case 4:
-                        x = Soccer.crc2.canvas.width * 0.9;
+                        x = Soccer.crc2.canvas.width * 0.2;
                         break;
                     case 5:
-                        x = Soccer.crc2.canvas.width * 0.6;
+                        x = Soccer.crc2.canvas.width * 0.4;
                         break;
                     case 6:
                         x = Soccer.crc2.canvas.width * 0.65;
                         break;
                     case 7:
-                        x = Soccer.crc2.canvas.width * 0.65;
+                        x = Soccer.crc2.canvas.width * 0.35;
                         break;
                     case 8:
                         x = Soccer.crc2.canvas.width * 0.6;
                         break;
                     case 9:
-                        x = Soccer.crc2.canvas.width * 0.725;
+                        x = Soccer.crc2.canvas.width * 0.275;
                         break;
                     case 10:
                         x = Soccer.crc2.canvas.width * 0.6;
@@ -110,7 +110,7 @@ var Soccer;
                         y = Soccer.crc2.canvas.height * 0.7;
                         break;
                     case 4:
-                        y = Soccer.crc2.canvas.height * 0.9;
+                        y = Soccer.crc2.canvas.height * 0.7;
                         break;
                     case 5:
                         y = Soccer.crc2.canvas.height * 0.1;
@@ -144,7 +144,7 @@ var Soccer;
                         y = Soccer.crc2.canvas.height * 0.3;
                         break;
                     case 3:
-                        y = Soccer.crc2.canvas.height * 0.7;
+                        y = Soccer.crc2.canvas.height * 0.9;
                         break;
                     case 4:
                         y = Soccer.crc2.canvas.height * 0.9;
