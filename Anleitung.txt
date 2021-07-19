@@ -1,0 +1,8 @@
+Codeordner öffnen und Fußball.html starten
+
+Über das Formular die Farben der Teamshirts bestimmen, die Präzision der Spieler bestimmen, die Geschwindigkeit der Spieler bestimmen
+Dann eine beliebige Taste auf der Tastatur drücken, um das Spiel zu starten
+Mit der Maus kann der Ball geschossen werden
+
+Möchtest du Spieler austauschen, klicke auf den Spielerwechselbutton des jeweiligen Teams
+Möchtest du alle Infos über einen Spieler, hover über die Anzeige der Spieler des jeweiligen Teams
